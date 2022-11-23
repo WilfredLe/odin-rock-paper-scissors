@@ -14,24 +14,26 @@ function getComputerChoice() {
 }
 
 function playRound(computerSelection,playerSelection) {
-    winMsg = `You Win! ${playerSelection} beats ${computerSelection}!`;
-    loseMsg = `You Lose! ${computerSelection} beats ${playerSelection}!`;
-    tieMsg = `It is a tie! You both chose ${playerSelection}!`;
-    results ='';
-    winner ='';
-    if (playerSelection.toLowerCase() === "rock") {
-        if (computerSelection.toLowerCase() === 'paper') {results = loseMsg; winner = 'computer'}
-        else if (computerSelection.toLowerCase() === "rock") {results = tieMsg; winner = 'none'}
+    const userChoice = playerSelection.toLowerCase();
+    const compChoice = computerSelection.toLowerCase();
+    const winMsg = `You Win! ${playerSelection} beats ${computerSelection}!`;
+    const loseMsg = `You Lose! ${computerSelection} beats ${playerSelection}!`;
+    const tieMsg = `It is a tie! You both chose ${playerSelection}!`;
+    let results ='';
+    let winner ='';
+    if (userChoice === "rock") {
+        if (compChoice === 'paper') {results = loseMsg; winner = 'computer'}
+        else if (compChoice === "rock") {results = tieMsg; winner = 'none'}
         else {results = winMsg; winner = 'user'}
     } 
-    else if (playerSelection.toLowerCase() === "paper") {
-        if (computerSelection.toLowerCase() === 'scissors') {results = loseMsg; winner = 'computer'}
-        else if (computerSelection.toLowerCase() === "paper") {results = tieMsg; winner = 'none'}
+    else if (userChoice === "paper") {
+        if (compChoice === 'scissors') {results = loseMsg; winner = 'computer'}
+        else if (compChoice === "paper") {results = tieMsg; winner = 'none'}
         else {results = winMsg; winner = 'user'}
     }
     else {
-        if (computerSelection.toLowerCase() === 'rock') {results = loseMsg; winner = 'computer'}
-        else if (computerSelection.toLowerCase() === "scissors") {results = tieMsg; winner = 'none'}
+        if (compChoice === 'rock') {results = loseMsg; winner = 'computer'}
+        else if (compChoice === "scissors") {results = tieMsg; winner = 'none'}
         else {results = winMsg; winner = 'user'}
     };
     return [results,winner]
