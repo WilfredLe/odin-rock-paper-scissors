@@ -1,18 +1,11 @@
-// Pseduocode
-// 1. User inputs choice (Rock, Paper, or Scissors)
-// 2. Computer choice is randomly selected
-// 3. Comparision is made between user and computer choice
-// 4. Results returned depending on outcome
-let rockBtn = document.querySelector(".rock");
-let paperBtn = document.querySelector(".paper");
-let scissorsBtn = document.querySelector(".scissors");
 let allBtn = document.querySelectorAll("button");
 let userScoreElm = document.querySelector('.userScore');
 let compScoreElm = document.querySelector('.compScore');
+let scoreMsg = document.querySelector('h2');
 let scorePlayer = 0;
 let scoreComputer = 0;
 let roundsPlayed = 0;
-let scoreMsg = document.querySelector('h2');
+
 
 allBtn.forEach((elm) => {
     elm.addEventListener('click', (e) => {
@@ -32,33 +25,29 @@ function getComputerChoice() {
 function playRound(computerSelection,playerSelection) {
     const userChoice = playerSelection.toLowerCase();
     const compChoice = computerSelection.toLowerCase();
-    const winMsg = `You Win! ${playerSelection} beats ${computerSelection}!`;
-    const loseMsg = `You Lose! ${computerSelection} beats ${playerSelection}!`;
-    const tieMsg = `It is a tie! You both chose ${playerSelection}!`;
-    let results ='';
     let winner ='';
     if (userChoice === "rock") {
-        if (compChoice === 'paper') {results = loseMsg; winner = 'computer'}
-        else if (compChoice === "rock") {results = tieMsg; winner = 'none'}
-        else {results = winMsg; winner = 'user'}
+        if (compChoice === 'paper') {winner = 'computer'}
+        else if (compChoice === "rock") {winner = 'none'}
+        else {winner = 'user'}
     } 
     else if (userChoice === "paper") {
-        if (compChoice === 'scissors') {results = loseMsg; winner = 'computer'}
-        else if (compChoice === "paper") {results = tieMsg; winner = 'none'}
-        else {results = winMsg; winner = 'user'}
+        if (compChoice === 'scissors') {winner = 'computer'}
+        else if (compChoice === "paper") {winner = 'none'}
+        else {winner = 'user'}
     }
     else {
-        if (compChoice === 'rock') {results = loseMsg; winner = 'computer'}
-        else if (compChoice === "scissors") {results = tieMsg; winner = 'none'}
-        else {results = winMsg; winner = 'user'}
+        if (compChoice === 'rock') {winner = 'computer'}
+        else if (compChoice === "scissors") {winner = 'none'}
+        else {winner = 'user'}
     };
-    return [results,winner]
+    return winner
 };
 
 function game(playerChoice) {
     let result = playRound(getComputerChoice(),playerChoice);
-    if (result[1] === 'user') {scorePlayer++; roundsPlayed++}
-    else if (result[1] === 'none') {roundsPlayed++}
+    if (result === 'user') {scorePlayer++; roundsPlayed++}
+    else if (result === 'none') {roundsPlayed++}
     else {scoreComputer++; roundsPlayed++};
     userScoreElm.textContent = scorePlayer;
     compScoreElm.textContent = scoreComputer;

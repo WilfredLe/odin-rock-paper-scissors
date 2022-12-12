@@ -44,7 +44,7 @@
 .scoreValue {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -56,9 +56,12 @@ img {
 }
 
 .repeatP {
+    color: white;
+    background-color: black;
     margin: 0;
+    padding: 0;
+    padding: 0;
     width: 100%;
-    border: black solid 2px;
     text-align: center;
     font-weight: bold;
 }
@@ -80,4 +83,11 @@ h2 {
 
 .userScore .compScore {
     font-size: 15px;
+}
+
+button {
+    background-color: turquoise;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
 }
