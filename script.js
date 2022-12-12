@@ -7,6 +7,11 @@ let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
 let scissorsBtn = document.querySelector(".scissors");
 let allBtn = document.querySelectorAll("button");
+let userScoreElm = document.querySelector('.userScore');
+let compScoreElm = document.querySelector('.compScore');
+let scorePlayer = 0;
+let scoreComputer = 0;
+let roundsPlayed = 0;
 
 allBtn.forEach((elm) => {
     elm.addEventListener('click', (e) => {
@@ -50,16 +55,22 @@ function playRound(computerSelection,playerSelection) {
 };
 
 function game(playerChoice) {
-    let scorePlayer = 0;
-    let scoreComputer = 0;
-    for (let i = 0; i < 5; i++) {
-        let result = playRound(getComputerChoice(),playerChoice);
-        console.log(result[0]);
-        if (result[1] === 'user') {scorePlayer++}
-        else if (result[1] === 'none') {}
-        else {scoreComputer++}
-    };
-    if (scorePlayer === scoreComputer) {console.log("No Winner! It is a tie!")}
-    else if (scorePlayer > scoreComputer) {console.log("Congrats! You win!")}
-    else {console.log('Sorry! You lost!')};
+    let result = playRound(getComputerChoice(),playerChoice);
+    if (result[1] === 'user') {scorePlayer++; roundsPlayed++}
+    else if (result[1] === 'none') {roundsPlayed++}
+    else {scoreComputer++; roundsPlayed++};
+    userScoreElm.textContent = scorePlayer;
+    compScoreElm.textContent = scoreComputer;
+    if(roundsPlayed === 5) {
+        if (scorePlayer === scoreComputer) {console.log("No Winner! It is a tie!")}
+        else if (scorePlayer > scoreComputer) {console.log("Congrats! You win!")}
+        else {console.log('Sorry! You lost!')};
+        resetScore()
+    }
+}
+
+function resetScore() {
+    scorePlayer = 0; 
+    scoreComputer = 0; 
+    roundsPlayed = 0;
 }
