@@ -1,0 +1,83 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 1;
+}
+
+.choices {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex: 0 1 0;
+}
+
+.menuItem {
+    display: flex; 
+    flex-direction: column;
+    align-items: space-between;
+    gap: 50px;
+}
+
+.score {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scoreContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scoreValue {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    border: solid black;
+    border-radius: 25px;
+}
+
+.repeatP {
+    margin: 0;
+    width: 100%;
+    border: black solid 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 50px;
+    text-decoration: underline black solid;
+}
+
+h2 {
+    font-size: 25px;
+    border: solid black;
+}
+
+.who {
+    font-weight: bold;
+    text-decoration: underline black solid;
+}
+
+.userScore .compScore {
+    font-size: 15px;
+}

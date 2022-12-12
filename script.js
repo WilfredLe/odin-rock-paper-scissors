@@ -12,6 +12,7 @@ let compScoreElm = document.querySelector('.compScore');
 let scorePlayer = 0;
 let scoreComputer = 0;
 let roundsPlayed = 0;
+let scoreMsg = document.querySelector('h2');
 
 allBtn.forEach((elm) => {
     elm.addEventListener('click', (e) => {
@@ -62,9 +63,9 @@ function game(playerChoice) {
     userScoreElm.textContent = scorePlayer;
     compScoreElm.textContent = scoreComputer;
     if(roundsPlayed === 5) {
-        if (scorePlayer === scoreComputer) {console.log("No Winner! It is a tie!")}
-        else if (scorePlayer > scoreComputer) {console.log("Congrats! You win!")}
-        else {console.log('Sorry! You lost!')};
+        if (scorePlayer === scoreComputer) {scoreMsg.textContent = "SCORE: No Winner! It is a tie!"}
+        else if (scorePlayer > scoreComputer) {scoreMsg.textContent = "SCORE: Congrats! You win!"}
+        else {scoreMsg.textContent ='SCORE: Sorry! You lost!'};
         resetScore()
     }
 }
