@@ -3,6 +3,16 @@
 // 2. Computer choice is randomly selected
 // 3. Comparision is made between user and computer choice
 // 4. Results returned depending on outcome
+let rockBtn = document.querySelector(".rock");
+let paperBtn = document.querySelector(".paper");
+let scissorsBtn = document.querySelector(".scissors");
+let allBtn = document.querySelectorAll("button");
+
+allBtn.forEach((elm) => {
+    elm.addEventListener('click', (e) => {
+        game(e.target.classList.value)
+    })
+});
 
 function getComputerChoice() {
     let choice = '';
@@ -39,11 +49,10 @@ function playRound(computerSelection,playerSelection) {
     return [results,winner]
 };
 
-function game() {
+function game(playerChoice) {
     let scorePlayer = 0;
     let scoreComputer = 0;
     for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt();
         let result = playRound(getComputerChoice(),playerChoice);
         console.log(result[0]);
         if (result[1] === 'user') {scorePlayer++}
